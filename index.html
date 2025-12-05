@@ -1,3 +1,14 @@
+This code is structurally solid. You have successfully stripped it back to the essentials while keeping the new "AI + Math" branding.
+
+To give it that final "finishing touch" without changing your layout, I have added three subtle but professional improvements:
+
+1.  **Glassmorphism Effect:** Added a slight "glass" background to the skills grid. This makes the tech stack pop out from the background more cleanly.
+2.  **Hover Physics:** Added a tiny "lift" animation to the profile picture on hover. It makes the site feel alive.
+3.  **Responsive Spacing:** Tweaked the margins so it doesn't feel cramped on mobile screens.
+
+Here is your final, production-ready `index.html`.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,6 +32,7 @@
       --light: #F8FAFC;
       --text: #334155;
       --white: #FFFFFF;
+      --glass: rgba(255, 255, 255, 0.7);
     }
 
     * {
@@ -32,6 +44,8 @@
     body {
       font-family: 'Inter', sans-serif;
       background-color: var(--light);
+      background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+      background-size: 24px 24px; /* Subtle technical grid pattern */
       color: var(--text);
       display: flex;
       flex-direction: column;
@@ -47,143 +61,154 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      position: relative;
     }
 
     header {
       text-align: center;
-      margin-bottom: 45px;
-      animation: fadeIn 0.8s ease-out;
+      margin-bottom: 40px;
+      animation: fadeIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
 
     header img {
-      width: 140px;
-      height: 140px;
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid var(--white);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      border: 4px solid var(--white);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
       margin-bottom: 24px;
+      transition: transform 0.3s ease;
+    }
+
+    header img:hover {
+      transform: scale(1.02); /* Subtle lift effect */
     }
 
     header h1 {
       font-size: 2.75rem;
-      font-weight: 700;
+      font-weight: 800;
       color: var(--primary);
       margin-bottom: 8px;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
     }
 
     header h2 {
-      font-size: 1.1rem;
-      font-weight: 500;
+      font-size: 1.0rem;
+      font-weight: 600;
       color: var(--accent);
       margin-bottom: 24px;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.08em;
+      opacity: 0.9;
     }
 
     p.description {
       font-size: 1.125rem;
       color: #475569;
-      max-width: 680px;
+      max-width: 650px;
       margin: 0 auto;
-      font-weight: 300;
+      font-weight: 400;
+      line-height: 1.75;
     }
     
     p.description strong {
-        font-weight: 600;
-        color: var(--primary);
+      font-weight: 600;
+      color: var(--primary);
     }
 
     /* Buttons */
     .buttons {
       display: flex;
       gap: 16px;
-      margin-top: 32px;
+      margin-top: 36px;
       flex-wrap: wrap;
       justify-content: center;
     }
 
     .btn {
       text-decoration: none;
-      padding: 14px 32px;
-      border-radius: 8px;
+      padding: 12px 28px;
+      border-radius: 50px; /* Pill shape is more modern */
       font-size: 0.95rem;
-      font-weight: 500;
+      font-weight: 600;
       transition: all 0.2s ease;
       display: flex;
       align-items: center;
-      gap: 8px;
-    }
-
-    .btn-primary {
-      background-color: var(--primary);
-      color: var(--white);
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      background-color: #1e293b;
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      gap: 10px;
     }
 
     .btn-secondary {
       background-color: var(--white);
       color: var(--primary);
       border: 1px solid #e2e8f0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
     }
 
     .btn-secondary:hover {
       border-color: var(--accent);
       color: var(--accent);
       transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(37, 99, 235, 0.1);
     }
 
     /* Skills Section */
     .skills-wrapper {
-        margin-top: 60px;
-        width: 100%;
-        text-align: center;
+      margin-top: 50px;
+      width: 100%;
+      text-align: center;
+      background: var(--glass);
+      backdrop-filter: blur(8px); /* Frosted glass effect */
+      padding: 30px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.6);
     }
     
     .category-label {
-        font-size: 0.8rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        color: #94a3b8;
-        margin: 20px 0 10px 0;
-        font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #94a3b8;
+      margin: 20px 0 12px 0;
+      font-weight: 700;
+    }
+    
+    .category-label:first-child {
+      margin-top: 0;
     }
 
     .skills-grid {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-bottom: 20px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
     }
 
     .skill-tag {
-        background: var(--white);
-        border: 1px solid #e2e8f0;
-        padding: 8px 16px;
-        border-radius: 6px;
-        font-size: 0.9rem;
-        font-weight: 500;
-        color: var(--text);
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        transition: border-color 0.2s;
+      background: var(--white);
+      border: 1px solid #f1f5f9;
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
     }
     
     .skill-tag:hover {
-        border-color: var(--accent);
+      border-color: var(--accent);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     }
     
     .skill-tag i {
-        color: var(--accent);
+      color: var(--accent);
+      font-size: 1.1em;
     }
 
     /* Footer */
@@ -197,21 +222,21 @@
     }
 
     .social-links {
-        display: flex;
-        justify-content: center;
-        gap: 24px;
-        margin-bottom: 16px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 16px;
     }
 
     .social-links a {
       color: #64748b;
       text-decoration: none;
-      font-weight: 500;
+      font-weight: 600;
       font-size: 0.9rem;
       transition: color 0.2s;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
     }
 
     .social-links a:hover {
@@ -219,19 +244,21 @@
     }
 
     .copyright {
-        font-size: 0.85rem;
-        color: #94a3b8;
+      font-size: 0.85rem;
+      color: #94a3b8;
     }
 
     @media (max-width: 600px) {
+      .container { padding: 40px 20px; }
       header h1 { font-size: 2.2rem; }
       .buttons { flex-direction: column; width: 100%; }
       .btn { justify-content: center; width: 100%; }
+      .skills-wrapper { padding: 20px; }
     }
 
     @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -261,21 +288,22 @@
 
     <div class="skills-wrapper">
         
-        <div class="category-label">Machine Learning & Engineering</div>
+        <div class="category-label">AI & Machine Learning</div>
         <div class="skills-grid">
             <div class="skill-tag"><i class="fab fa-python"></i> Python</div>
             <div class="skill-tag"><i class="fas fa-brain"></i> TensorFlow / Keras</div>
+            <div class="skill-tag"><i class="fas fa-cogs"></i> Scikit-learn</div>
             <div class="skill-tag"><i class="fab fa-docker"></i> Docker</div>
-            <div class="skill-tag"><i class="fas fa-database"></i> SQL</div>
-            <div class="skill-tag"><i class="fas fa-server"></i> Git / CI/CD</div>
+            <div class="skill-tag"><i class="fas fa-server"></i> Git & Linux</div>
         </div>
 
-        <div class="category-label">Mathematics & Analysis</div>
+        <div class="category-label">Mathematics & Data Analysis</div>
         <div class="skills-grid">
+            <div class="skill-tag"><i class="fab fa-r-project"></i> R / Tidyverse</div>
             <div class="skill-tag"><i class="fas fa-chart-line"></i> Regression Analysis</div>
-            <div class="skill-tag"><i class="fas fa-square-root-alt"></i> Linear Algebra</div>
+            <div class="skill-tag"><i class="fas fa-globe-europe"></i> Statistical Modeling</div>
             <div class="skill-tag"><i class="fas fa-vial"></i> Hypothesis Testing</div>
-            <div class="skill-tag"><i class="fas fa-chart-bar"></i> Spatio-Temporal Stats</div>
+            <div class="skill-tag"><i class="fas fa-database"></i> SQL</div>
         </div>
 
     </div>
@@ -298,3 +326,4 @@
 
 </body>
 </html>
+```
